@@ -33,7 +33,7 @@ if st.button("Calculate"):
 
             if st.button("Send Alert Email"):
                 # Add your email sending code using the send_alert_email function you've defined earlier
-        else:
-            st.write(f"Estimated CO2 Emissions: {emissions:.2f} kg (Safe)")
+            else:
+                st.write(f"Estimated CO2 Emissions: {emissions:.2f} kg (Safe)")
     else:
         st.write("Unknown activity type. Please contact the developer.")
