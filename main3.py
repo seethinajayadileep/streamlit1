@@ -31,7 +31,7 @@ if st.button("Calculate"):
                 f"Estimated CO2 Emissions: {emissions:.2f} kg (Exceeds threshold)"
             )
 
-            st.button("Send Alert Email"):
+            st.button("Send Alert Email")
                 # Add your email sending code using the send_alert_email function you've defined earlier
         else:
             st.write(f"Estimated CO2 Emissions: {emissions:.2f} kg (Safe)")
