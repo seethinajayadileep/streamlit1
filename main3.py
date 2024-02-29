@@ -15,10 +15,13 @@ def send_alert_email(emissions):
   message["From"] = sender_email
   message["To"] = receiver_email
 
-  text = `\
+  text1 = """\
         hey your vechile producing high emissions!.
-        it is estimated that co2 emissions :  ${emissions} kg (exceeds threshold)
-  please service your vechile
+        it is estimated that co2 emissions :"""
+  text2="""  kg (exceeds threshold)
+  please service your vechile"""
+  text=text1+emissions+text2
+
   part = MIMEText(text, "plain")
   message.attach(part)
  with smtplib.SMTP("smtp.gmail.com", 587) as server:
