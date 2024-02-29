@@ -1,5 +1,32 @@
 import streamlit as st
+import smtplib  # For email functionality
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+# ... Additional libraries for video processing
+from email.mime.base import MIMEBase
+from email import encoders
 
+def send_alert_email(emissions):
+  sender_email = "jayadileepb@gmail.com"
+  receiver_email = "nageshch9966@gmail.com"
+  password = "pzctzrkicdwijztj"
+  message = MIMEMultipart("alternative")
+  message["Subject"] = "Danger limit exceeded!"
+  message["From"] = sender_email
+  message["To"] = receiver_email
+
+  text = `\
+        hey your vechile producing high emissions!.
+        it is estimated that co2 emissions :  ${emissions} kg (exceeds threshold)
+  please service your vechile
+  part = MIMEText(text, "plain")
+  message.attach(part)
+ with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+
+        
 def calculate_emissions(activity, activity_amount):
   # Sample emission factors - you'll need a more comprehensive source
  emission_factors = {
@@ -39,6 +66,7 @@ if st.button("Calculate"):
 
       if st.button("Send Alert Email"):
         print("yes") 
+        send_alert_email(emissions)
     else:
       st.write(f"Estimated CO2 Emissions: {emissions:.2f} kg (Safe)")
   else:
