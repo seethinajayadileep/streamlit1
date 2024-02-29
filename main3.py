@@ -28,7 +28,7 @@ def send_alert_email(emissions):
             server.starttls()
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-
+  st.write("email sent")
         
 def calculate_emissions(activity, activity_amount):
   # Sample emission factors - you'll need a more comprehensive source
@@ -70,6 +70,7 @@ if st.button("Calculate"):
       if st.button("Send Alert Email"):
         print("yes") 
         send_alert_email(emissions)
+        
     else:
       st.write(f"Estimated CO2 Emissions: {emissions:.2f} kg (Safe)")
   else:
